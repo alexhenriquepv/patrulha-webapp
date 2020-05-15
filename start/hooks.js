@@ -13,7 +13,7 @@ hooks.after.providersBooted(() => {
         const coords = coordinate_str.split(';')
 
         // lat,lng
-        let url = `https://www.google.com/maps/?q=${coords[1]},${coords[0]}`
+        let url = `https://www.google.com/maps/search/?api=1&query=${coords[1]},${coords[0]}`
         return url
     })
 })
