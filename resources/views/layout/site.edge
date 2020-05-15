@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Fundação Patrulha da Criança</title>
+    <meta charset="utf-8" />
+    <meta name="theme-color" content="#000">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta property="og:title" content="Fundação Patrulha da criança" />
+    <meta property="og:description" content="Protótipo do site. Veja como podemos melhorar e me fale." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ url }}" />
+    <meta property="og:image" content="{{ assetsUrl('images/logo.png') }}" />
+    <link rel="icon" sizes="192x192" href="{{ assetsUrl('images/logo.png') }}">
+    <link rel="apple-touch-icon" href="{{ assetsUrl('images/logo.png') }}">
+    <link rel="apple-touch-startup-image" href="{{ assetsUrl('images/logo.png') }}">
+    {{ style('https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css') }}
+    {{ style('assets/css/main.css') }}
+    @!section('css')
+</head>
+
+<body class="is-preload">
+
+    <!-- Header -->
+    <div id="header">
+
+        <div class="top">
+
+            <!-- Logo -->
+            <div id="logo">
+                <span class="image avatar48"><img src="{{ assetsUrl('images/logo.jpg') }}" alt="" /></span>
+                <h1 id="title">Fundação</h1>
+                <p>Patrulha da Criança</p>
+            </div>
+
+            <!-- Nav -->
+            <nav id="nav">
+                <ul>
+                    <li>
+                        @if(url == route('site.index'))
+                        <a href="#top" id="top-link" class="scroll-link"><span class="icon solid fa-home">Início</span></a>
+                        @else
+                        <a href="{{ route('site.index') }}" id="top-link" class="scroll-link"><span class="icon solid fa-home">Início</span></a>
+                        @endif
+                    </li>
+                    <li>
+                        <a href="#portfolio" id="portfolio-link" class="scroll-link"><span
+                                class="icon solid fa-heart">Nossas ações</span></a>
+                    </li>
+                    <li>
+                        <a href="#about" id="about-link" class="scroll-link"><span class="icon solid fa-tasks">Conheça o
+                                projeto</span></a>
+                    </li>
+                    <li>
+                        <a href="#contact" id="contact-link" class="scroll-link"><span class="icon solid fa-mobile">Fale
+                                com a gente</span></a>
+                    </li>
+                    <li>
+                        <a href="{{ route('site.cadastro') }}" id="cadastro-link"><span class="icon solid fa-clipboard">Cadastro</span></a>
+                    </li>
+                </ul>
+            </nav>
+
+        </div>
+
+        <div class="bottom">
+
+            <!-- Social Icons -->
+            <ul class="icons">
+                <li><a href="#" class="icon brands fa-instagram"><span class="label">Insta</span></a></li>
+                <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <!-- Main -->
+    <div id="main">
+        @!section('content')
+    </div>
+
+    <!-- Footer -->
+    <div id="footer">
+
+        <!-- Copyright -->
+        <ul class="copyright">
+            <li>&copy; 2020</li>
+            <li>Fundação Patrulha da Criança</li>
+        </ul>
+
+    </div>
+
+    <!-- Scripts -->
+    {{ script('assets/js/jquery.min.js') }}
+    {{ script('assets/js/jquery.scrolly.min.js') }}
+    {{ script('assets/js/jquery.scrollex.min.js') }}
+    {{ script('assets/js/browser.min.js') }}
+    {{ script('assets/js/breakpoints.min.js') }}
+    {{ script('assets/js/util.js') }}
+    {{ script('assets/js/main.js') }}
+    @!section('js')
+</body>
+
+</html>

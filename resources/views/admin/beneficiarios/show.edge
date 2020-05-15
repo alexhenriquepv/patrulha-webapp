@@ -1,0 +1,46 @@
+@layout('layout/admin')
+
+@section('content')
+
+<div class="ui segment basic">
+    <h2 class="ui header">
+        <div class="content">
+            {{ beneficiario.nome }}
+        </div>
+    </h2>
+</div>
+
+<div class="ui segment basic">
+    <table class="ui table celled inverted">
+        <tbody>
+            <tr>
+                <td>Data de cadastro</td>
+                <td>{{ moment(beneficiario.created_at, 'DD/MM/YYYY') }}</td>
+            </tr>
+            <tr>
+                <td>Solicitação</td>
+                <td>{{ beneficiario.descricao }}</td>
+            </tr>
+            <tr>
+                <td>CEP</td>
+                <td>{{ beneficiario.cep || '' }}</td>
+            </tr>
+            <tr>
+                <td>Bairro</td>
+                <td>{{ beneficiario.bairro || '' }}</td>
+            </tr>
+            @if(beneficiario.coordenadas)
+            <tr>
+                <td>Ver no mapa</td>
+                <td>
+                    <a target="_blank" href="{{ maps_url(beneficiario.coordenadas) }}" class="button ui icon green">
+                        <i class="icon map"></i>
+                    </a>
+                </td>
+            </tr>
+            @endif
+        </tbody>
+    </table>
+</div>
+
+@endsection
