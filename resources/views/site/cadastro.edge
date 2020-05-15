@@ -1,0 +1,160 @@
+@layout('layout/site')
+
+@section('content')
+<section id="contact" class="four">
+    <div class="container">
+
+        <header>
+            <h2>Cadastro</h2>
+        </header>
+
+        <p>
+            Fala um pouquinho como funciona o cadastro e lembra que, provavelente,
+            pessoas com pouca experiência digital estarão acessando o site.
+        </p>
+
+        <form class="ui form" method="post" id="form" data-url="{{ route('beneficiarios.store') }}">
+            {{ csrfField() }}
+            <div class="row">
+                <div class="ui field col-6 col-12-mobile">
+                    <input type="text" name="nome" placeholder="Nome completo" />
+                </div>
+                <div class="col-6 col-12-mobile">
+                    <input type="text" name="contato" placeholder="Número pra contato" />
+                </div>
+
+                <div class="col-4 col-12-mobile">
+                    <label for="">CPF</label>
+                    <input type="text" name="cpf" placeholder="" />
+                </div>
+
+                <div class="col-4 col-12-mobile">
+                    <label for="">RG</label>
+                    <input type="text" name="rg" placeholder="" />
+                </div>
+
+                <div class="ui field col-4 col-12-mobile">
+                    <label for="estado_civil">Estado civil</label>
+                    <select class="ui dropdown" name="estado_civil">
+                        <option value="">Selecione</option>
+                        <option value="Solteiro">Solteiro</option>
+                        <option value="Casado">Casado</option>
+                        <option value="Divorciado">Divorciado</option>
+                    </select>
+                </div>
+
+                <div class="ui field col-4 col-12-mobile">
+                    <label for="escolaridade">Escolaridade</label>
+                    <select class="ui dropdown" name="escolaridade">
+                        <option value="">Selecione</option>
+                        <option value="Analfabeto">Analfabeto</option>
+                        <option value="Ensino Fundamental incompleto">Ensino Fundamental incompleto</option>
+                        <option value="Ensino Fundamental completo">Ensino Fundamental completo</option>
+                        <option value="Ensino médio incompleto">Ensino médio incompleto</option>
+                        <option value="Ensino médio completo">Ensino médio completo</option>
+                        <option value="Ensino superior incompleto">Ensino superior incompleto</option>
+                        <option value="Ensino superior completo">Ensino superior completo</option>
+                    </select>
+                </div>
+
+                <div class="col-4 col-12-mobile">
+                    <label for="">Profissão</label>
+                    <input type="text" name="profissao" />
+                </div>
+
+                <div class="ui field col-4 col-12-mobile">
+                    <label for="ocupacao">Ocupação</label>
+                    <select class="ui dropdown" name="ocupacao">
+                        <option value="">Selecione</option>
+                        <option value="Desempregado">Desempregado</option>
+                        <option value="Empregado">Empregado</option>
+                        <option value="Autônomo">Autônomo</option>
+                    </select>
+                </div>
+
+                <div class="col-4 col-12-mobile">
+                    <input type="text" name="cep" placeholder="CEP" />
+                </div>
+                <div class="col-4 col-12-mobile">
+                    <input type="text" name="cidade" placeholder="Cidade" />
+                </div>
+                <div class="col-4 col-12-mobile">
+                    <input type="text" name="bairro" placeholder="Bairro" />
+                </div>
+                <div class="col-4 col-12-mobile">
+                    <input type="text" name="rua" placeholder="Rua" />
+                </div>
+                <div class="col-4 col-12-mobile">
+                    <input type="text" name="complemento" placeholder="Complemento" />
+                </div>
+                <div class="col-4 col-12-mobile">
+                    <input type="text" name="ponto_referencia" placeholder="Ponto de referência" />
+                </div>
+
+                <div class="ui field col-6 col-12-mobile">
+                    <label for="condicao_moradia">Condição de moradia</label>
+                    <select class="ui dropdown" name="condicao_moradia">
+                        <option value="">Selecione</option>
+                        <option value="Próprio">Próprio</option>
+                        <option value="Financiado">Financiado</option>
+                        <option value="Alugado">Alugado</option>
+                        <option value="Cedido">Cedido</option>
+                        <option value="Programa social">Programa social</option>
+                        <option value="Invasão">Invasão</option>
+                    </select>
+                </div>
+
+                <div class="ui field col-6 col-12-mobile">
+                    <label for="com_deficiencia">Pessoa com deficiência?</label>
+                    <select class="ui dropdown" name="com_deficiencia">
+                        <option value="">Selecione</option>
+                        <option value="Não">Não</option>
+                        <option value="Sim">Sim</option>
+                    </select>
+                </div>
+
+                <div class="ui field col-12 col-12-mobile">
+                    <label for="descricao">Descreva a solicitação</label>
+                    <textarea name="descricao"></textarea>
+                </div>
+
+                <div class="col-12">
+                    <div class="ui error message"></div>
+                    <input type="submit" value="Finalizar cadastro" />
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+<section>
+    <p>Tá em dúvida? Manda uma mensagem que a gente te ajuda!</p>
+
+    <ul class="icons">
+        <li style="display: block;">
+            <a href="#" class="icon brands fa-whatsapp" style="width: 100%;">
+                92 99900-0099
+                <span class="label">Whatsapp</span>
+            </a>
+        </li>
+        <li style="display: block;">
+            <a href="#" class="icon brands fa-instagram" style="width: 100%;">
+                @patrulhadacrianca
+                <span class="label">Instagram</span>
+            </a>
+        </li>
+        <li style="display: block;">
+            <a href="#" class="icon brands fa-facebook-f" style="width: 100%;">
+                /patrulhadacrianca
+                <span class="label">Facebook</span>
+            </a>
+        </li>
+    </ul>
+</section>
+@endsection
+
+@section('js')
+{{ script('https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js') }}
+{{ script('https://unpkg.com/sweetalert/dist/sweetalert.min.js') }}
+{{ script('site/js/cadastro') }}
+@endsection

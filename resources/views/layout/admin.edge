@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="_csrf" content="{{ csrfToken }}">
+    <title>Admin</title>
+    {{ style('https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css') }}
+    <style>
+        .logo.image {
+            width: 35px;
+            margin-right: 1em;
+        }
+        #content {
+            padding-top: 1em;
+            margin-left: 150px;
+        }
+        #btn-mobile {
+            position: absolute;
+            bottom: 2em;
+            right: 2em;
+            display: none;
+        }
+        @media screen and (max-width: 723px) {
+            #content {
+                margin-left: 0;
+            }
+            #btn-mobile {
+                display: block;
+            }
+        }
+    </style>
+    @!section('css')
+</head>
+<body>
+    <div class="ui thin sidebar inverted vertical menu">
+        <div class="item">
+            <a href="#" class="ui mini image logo">
+                <img src="{{ assetsUrl('images/logo.jpg') }}" alt="logo">
+            </a>
+            <a href="#">
+                Patrulha
+            </a>
+        </div>
+        <div class="item">
+            <a href="{{ route('beneficiarios.index') }}">
+                <b>Beneficiários</b>
+            </a>
+        </div>
+        <div class="item">
+            <a href="{{ route('beneficiarios.mapa') }}">
+                <b>Mapa</b>
+            </a>
+        </div>
+    </div>
+    <div class="pusher" id="content">
+        <div class="ui container">
+            @!section('content')
+        </div>
+
+        <button class="ui icon button circular big secondary" id="btn-mobile">
+            <i class="icon bars"></i>
+        </button>
+    </div>
+
+    {{ script('https://code.jquery.com/jquery-3.5.1.min.js') }}
+    {{ script('https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js') }}
+    {{ script('https://unpkg.com/sweetalert/dist/sweetalert.min.js') }}
+    <script>
+        const $sidebar = $('.ui.sidebar')
+            .sidebar('setting', 'closable', false)
+            .sidebar('setting', 'dimPage', false)
+            .sidebar('setting', 'transition', 'overlay')
+            .sidebar('setting', 'mobileTransition', 'overlay')
+
+        function setupPage () {
+            if ($(window).width() > 723) {
+                $sidebar.sidebar('show')
+            }
+            else {
+                $sidebar.sidebar('hide')
+                $("#btn-mobile").click(() => {
+                    $sidebar.sidebar('toggle')
+                })
+            }
+        }
+
+        setupPage()
+        // window.onresize = () => setupPage()
+    </script>
+    @!section('js')
+</body>
+</html>

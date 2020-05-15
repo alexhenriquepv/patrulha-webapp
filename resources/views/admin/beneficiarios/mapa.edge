@@ -1,0 +1,102 @@
+@layout('layout/admin')
+
+@section('content')
+
+<div class="ui segment basic">
+    <h2 class="ui header">
+        <div class="content">
+            Mapa
+        </div>
+    </h2>
+</div>
+
+<div class="ui segment basic map-container">
+    <div id="map"></div>
+</div>
+
+@endsection
+
+@section('js')
+<script src="https://js.arcgis.com/4.15/"></script>
+<script>
+require([
+    "esri/Map",
+    "esri/views/MapView",
+    "esri/layers/FeatureLayer",
+    "esri/Graphic",
+], (Map, MapView, FeatureLayer, Graphic) => {
+
+    const map = new Map({ basemap: 'dark-gray' })
+    const view = new MapView({
+        container: 'map',
+        map: map,
+        zoom: 12,
+        center: [-59.9866864, -3.0504812]
+    })
+
+    function init (data) {
+        const layer = new FeatureLayer({
+            source: data,
+            objectIdField: "id",
+            fields: [
+                { name: "id", type: "oid" },
+                { name: "nome", type: "string" },
+                { name: "url", type: "string" }
+            ],
+            popupTemplate: { 
+                title: "{nome}"
+            },
+            renderer: {
+                type: "simple",
+                symbol: {
+                    type: "simple-marker",
+                    color: [248, 148, 6]
+                }
+            }
+        })
+
+        map.add(layer)
+    }
+
+    $.ajax({
+        url: '/api/beneficiarios',
+        success: (data) => {
+            let graphics = []
+            data.forEach(el => {
+                el.coordenadas = el.coordenadas.split(';')
+                const g = new Graphic({
+                    geometry: {
+                        type: "point",
+                        longitude: el.coordenadas[0],
+                        latitude: el.coordenadas[1]
+                    },
+                    attributes: {
+                        id: el.id,
+                        nome: el.nome
+                    }
+                })
+                graphics.push(g)
+            })
+
+            init(graphics)
+        },
+        error: (err) => {
+            console.log(err)
+        }
+    })
+})
+</script>
+@endsection
+
+@section('css')
+<link rel="stylesheet" href="https://js.arcgis.com/4.15/esri/themes/dark-blue/main.css" />
+<style>
+    #map {
+        padding: 0;
+        margin: 0;
+        height: 80vh;
+        width: 100%;
+        background-color: rgba(15, 15, 15, 1);
+    }
+</style>
+@endsection

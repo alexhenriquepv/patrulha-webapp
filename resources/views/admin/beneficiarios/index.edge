@@ -1,0 +1,76 @@
+@layout('layout/admin')
+
+@section('content')
+
+<div class="ui segment basic">
+    <h2 class="ui header">
+        <div class="content">
+            Beneficiários
+            <div class="sub header">
+                Total de {{ beneficiarios.total }} resultado(s)
+            </div>
+        </div>
+    </h2>
+</div>
+
+<form id="form-pequisa" class="ui segment basic center aligned" data-url="{{ url }}">
+    <div class="ui icon input">
+        <input type="text" name="nome" placeholder="Pesquisar.." autocomplete="off">
+        <i class="search icon"></i>
+    </div>
+</form>
+
+<div class="ui segment basic">
+    <table class="ui table celled inverted">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Data de Cadastro</th>
+                <th>#</th>
+            </tr>
+        </thead>
+        <tbody>
+            @each(b in beneficiarios.data)
+            <tr>
+                <td>{{ b.nome }}</td>
+                <td>{{ moment(b.created_at, 'DD/MM/YYYY') }}</td>
+                <td>
+                    <a 
+                        href="{{ route('beneficiarios.show', { id: b.id }) }}" 
+                        class="ui button inverted icon orange"
+                        title="Ver mais">
+                        <i class="icon ellipsis vertical"></i>
+                    </a>
+                    <button
+                        data-url="{{ route('beneficiarios.destroy', { id: b.id }) }}"
+                        class="ui button inverted icon red btn-del"
+                        title="Excluir">
+                        <i class="icon trash alternate"></i>
+                    </button>
+                </td>
+            </tr>
+            @endeach
+        </tbody>
+    </table>
+
+    <div class="ui pagination menu">
+        @if(beneficiarios.page > 1)
+        <a href="{{ route('beneficiarios.index') + '?page=' + (beneficiarios.page - 1) }}" class="ui icon button item">
+            <i class="chevron left icon"></i>
+        </a>
+        @endif
+        <a href="#" class="item">
+            {{ beneficiarios.page }}
+        </a>
+        @if(beneficiarios.page < beneficiarios.lastPage)
+        <a href="{{ route('beneficiarios.index') + '?page=' + (beneficiarios.page + 1) }}" class="ui icon button item">
+            <i class="chevron right icon"></i>
+        </a>
+        @endif
+    </div>
+</div>
+@endsection
+
+@section('js')
+{{ script('admin/beneficiarios/index') }}
+@endsection
