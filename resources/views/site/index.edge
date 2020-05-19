@@ -6,8 +6,8 @@
 	<div class="container">
 
 		<header>
-			<h2 class="alt">Apresentação do projeto</h2>
-			<p>Resumo rápido, com explicação simples e linguagem fácil</p>
+			<h2 class="alt">{{ theme.apresentacao.titulo.value }}</h2>
+			<p>{{ theme.apresentacao.descricao.value }}</p>
 		</header>
 
 		<footer>
@@ -22,20 +22,15 @@
 	<div class="container">
 
 		<header>
-			<h2>Nossas ações</h2>
+			<h2>{{ theme.acoes.titulo.value }}</h2>
 		</header>
 
-		<p>
-			Fale um pouco do que o projeto faz. Sobre as últimas atividades e
-			os objetivos, de forma simples e direta.
-			É um texto curto que define e caracteriza o projeto, portanto não
-			prolongue nem fale de mais.
-		</p>
+		<p>{{ theme.acoes.descricao.value }}</p>
 
 		<div class="row">
 			<div class="col-4 col-12-mobile">
 				<article class="item">
-					<a href="#" class="image fit"><img src="{{ assetsUrl('images/foto01.jpg') }}" alt="" /></a>
+					<a href="#" class="image fit"><img src="{{ assetsUrl('site/themes/default/images/foto01.jpg') }}" alt="" /></a>
 					<header>
 						<h3>Conte o que aconteceu</h3>
 					</header>
@@ -43,7 +38,7 @@
 			</div>
 			<div class="col-4 col-12-mobile">
 				<article class="item">
-					<a href="#" class="image fit"><img src="{{ assetsUrl('images/foto02.jpg') }}" alt="" /></a>
+					<a href="#" class="image fit"><img src="{{ assetsUrl('site/themes/default/images/foto02.jpg') }}" alt="" /></a>
 					<header>
 						<h3>Conte o que aconteceu</h3>
 					</header>
@@ -51,7 +46,7 @@
 			</div>
 			<div class="col-4 col-12-mobile">
 				<article class="item">
-					<a href="#" class="image fit"><img src="{{ assetsUrl('images/foto03.jpg') }}" alt="" /></a>
+					<a href="#" class="image fit"><img src="{{ assetsUrl('site/themes/default/images/foto03.jpg') }}" alt="" /></a>
 					<header>
 						<h3>Conte o que aconteceu</h3>
 					</header>
@@ -70,7 +65,7 @@
 			<h2>Conheça o projeto</h2>
 		</header>
 
-		<a href="#" class="image featured"><img src="{{ assetsUrl('images/banner.jpg') }}" alt="" /></a>
+		<a href="#" class="image featured"><img src="{{ assetsUrl('site/themes/default/images/banner.jpg') }}" alt="" /></a>
 
 		<p>
 			Aqui temos um texto mais longo e explicativo. Se alguém chega até aqui,

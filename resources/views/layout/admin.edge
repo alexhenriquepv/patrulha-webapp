@@ -36,10 +36,15 @@
     <div class="ui thin sidebar inverted vertical menu">
         <div class="item">
             <a href="#" class="ui mini image logo">
-                <img src="{{ assetsUrl('images/logo.jpg') }}" alt="logo">
+                <img src="{{ assetsUrl('site/themes/default/images/logo.jpg') }}" alt="logo">
             </a>
             <a href="#">
                 Patrulha
+            </a>
+        </div>
+        <div class="item">
+            <a href="{{ route('sitemanager.index') }}">
+                <b>Gerenciador do site</b>
             </a>
         </div>
         <div class="item">

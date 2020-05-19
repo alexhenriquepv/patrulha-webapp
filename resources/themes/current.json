@@ -1,0 +1,41 @@
+{
+    "logo": {
+        "type": "img",
+        "value": "/site/themes/default/images/logo.jpg"
+    },
+    "apresentacao": {
+        "img": {
+            "value": "/admin/filemanager/show/perfil.jpg"
+        },
+        "titulo": {
+            "value": "t"
+        },
+        "descricao": {
+            "value": "d"
+        }
+    },
+    "acoes": {
+        "titulo": {
+            "type": "text",
+            "value": "Nossas ações"
+        },
+        "descricao": {
+            "type": "text",
+            "value": "Fale um pouco do que o projeto faz. Sobre as últimas atividades e os objetivos, de forma simples e direta. É um texto curto que define e caracteriza o projeto, portanto não prolongue nem fale de mais."
+        },
+        "imagens": [
+            {
+                "type": "img",
+                "value": "/site/themes/default/images/banner.jpg"
+            },
+            {
+                "type": "img",
+                "value": "/site/themes/default/images/banner.jpg"
+            },
+            {
+                "type": "img",
+                "value": "/site/themes/default/images/banner.jpg"
+            }
+        ]
+    }
+}
