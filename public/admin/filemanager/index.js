@@ -110,7 +110,7 @@ $(document).ready(() => {
                             })
                         }
                         else {
-                            doUpload(f)
+                            doUpload(el.files[0])
                         }
                     }
                 }
