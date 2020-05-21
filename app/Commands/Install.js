@@ -30,7 +30,6 @@ class Install extends ace.Command {
   async generateConfigFiles () {
     this.info('Gerando arquivos de configuração')
     await this.ensureDir(Helpers.tmpPath('filemanager/img'))
-    await ace.call("seed")
   }
 
   async onlyTheme () {
@@ -43,6 +42,7 @@ class Install extends ace.Command {
       if (reset) await this.resetData()
       await this.createTables()
       await this.generateConfigFiles()
+      await this.onlyTheme()
       this.info(`Instalação concluída ${this.icon('success')}`)
     }
     catch (err) {

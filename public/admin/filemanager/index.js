@@ -1,4 +1,5 @@
 $(document).ready(() => {
+    const MAX_FILE_SIZE = 200000 // bytes
     $btnSelectFile = $('#btn-file-select')
     $fileList = $('#file-list')
 
@@ -89,7 +90,27 @@ $(document).ready(() => {
                     }
                 })
 
-                if (selection) doUpload(el.files[0])
+                if (selection) {
+                    const img = new Image()
+                    img.src = e.target.result
+                    img.onload = () => {
+                        const fileSize = el.files[0].size
+                        const proportion = fileSize / MAX_FILE_SIZE
+                        if (proportion > 1) {
+                            const canvas = document.createElement('canvas')
+                            const ctx = canvas.getContext('2d')
+                            canvas.width = img.naturalWidth / proportion
+                            canvas.height = img.naturalHeight / proportion
+                            ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+                            ctx.canvas.toBlob((b) => {
+                                const f = new File([b], el.files[0].name, {
+                                    type: 'image/jpeg'
+                                })
+                                doUpload(f)
+                            })
+                        }
+                    }
+                }
             }
             reader.readAsDataURL(el.files[0])
         })
