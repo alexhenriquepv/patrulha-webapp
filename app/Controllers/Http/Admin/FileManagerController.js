@@ -15,7 +15,7 @@ class FileManagerController {
         return view.render('admin/filemanager/index')
     }
 
-    async sendfile ({ request, response }) {
+    async store ({ request, response }) {
         const file = request.file('file', {
             types: ['image'],
             size: '0.2mb'
@@ -34,9 +34,15 @@ class FileManagerController {
         }
     }
 
-    async showfile ({ params, response }) {
+    async show({ params, response }) {
         const path = Helpers.tmpPath(IMG_PATH + "/" + params.name)
         response.download(path)
+    }
+
+    async destroy({ params, response }) {
+        const path = Helpers.tmpPath(IMG_PATH + "/" + params.name)
+        fs.unlinkSync(path)
+        response.send({ message: 'Arquivo excluido!' })
     }
 }
 

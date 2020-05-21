@@ -20,8 +20,9 @@ Route.group(() => {
     Route.post('sitemanager', 'SiteManagerController.store').as("sitemanager.store")
     
     Route.get('filemanager', 'FileManagerController.index').as("filemanager.index")
-    Route.post('filemanager', 'FileManagerController.sendfile').as("filemanager.sendfile")
-    Route.get('filemanager/show/:name', 'FileManagerController.showfile').as("filemanager.showfile")
+    Route.post('filemanager', 'FileManagerController.store').as("filemanager.store")
+    Route.get('filemanager/show/:name', 'FileManagerController.show').as("filemanager.show")
+    Route.delete('filemanager/:name', 'FileManagerController.destroy').as("filemanager.destroy")
 
     Route.get('seed', 'BeneficiarioController.seed')
 })

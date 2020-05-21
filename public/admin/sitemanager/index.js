@@ -59,10 +59,11 @@ $('document').ready(() => {
                 url: '/admin/sitemanager',
                 headers: { 'X-CSRF-TOKEN': $('meta[name=_csrf]').attr('content') },
                 data: fields,
-                success: (data) => {
-                    swal('Ok', data.message, 'success')
-                },
-                error: (err) => console.log(err)
+                success: (data) => swal('Ok', data.message, 'success'),
+                error: (err) => {
+                    console.log(err)
+                    swal('Ocorreu um problema', err.responseText, 'error')
+                }
             })
         },
         onFailure: (err) => console.log(err)
