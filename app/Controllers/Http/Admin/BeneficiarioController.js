@@ -13,7 +13,7 @@ class BeneficiarioController {
             query.where('nome','like','%' + nome + '%')
         }
 
-        const beneficiarios = await query.paginate(page, 3)
+        const beneficiarios = await query.paginate(page, 10)
         return view.render('admin/beneficiarios/index', { beneficiarios })
     }
 
