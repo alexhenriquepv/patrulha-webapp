@@ -4,54 +4,34 @@
 <!-- Intro -->
 <section id="top" class="one dark cover">
 	<div class="container">
-
 		<header>
-			<h2 class="alt">{{ theme.apresentacao.titulo.value }}</h2>
-			<p>{{ theme.apresentacao.descricao.value }}</p>
+			<h2 class="alt">{{ theme.apresentacao.titulo }}</h2>
+			<p>{{ theme.apresentacao.descricao }}</p>
 		</header>
-
 		<footer>
 			<a href="{{ route('site.cadastro') }}" class="button">Faça o seu cadastro</a>
 		</footer>
-
 	</div>
 </section>
 
 <!-- Portfolio -->
 <section id="portfolio" class="two">
 	<div class="container">
-
 		<header>
-			<h2>{{ theme.acoes.titulo.value }}</h2>
+			<h2>{{ theme.acoes.titulo }}</h2>
 		</header>
-
-		<p>{{ theme.acoes.descricao.value }}</p>
-
+		<p>{{ theme.acoes.descricao }}</p>
 		<div class="row">
+			@each(banner in theme.acoes.banners)
 			<div class="col-4 col-12-mobile">
 				<article class="item">
-					<a href="#" class="image fit"><img src="{{ assetsUrl('site/themes/default/images/foto01.jpg') }}" alt="" /></a>
+					<a href="#" class="image fit"><img src="{{ banner.imagem }}" alt="Ações, imagem {{ $loop.index + 1 }}" /></a>
 					<header>
-						<h3>Conte o que aconteceu</h3>
+						<h3>{{ banner.descricao }}</h3>
 					</header>
 				</article>
 			</div>
-			<div class="col-4 col-12-mobile">
-				<article class="item">
-					<a href="#" class="image fit"><img src="{{ assetsUrl('site/themes/default/images/foto02.jpg') }}" alt="" /></a>
-					<header>
-						<h3>Conte o que aconteceu</h3>
-					</header>
-				</article>
-			</div>
-			<div class="col-4 col-12-mobile">
-				<article class="item">
-					<a href="#" class="image fit"><img src="{{ assetsUrl('site/themes/default/images/foto03.jpg') }}" alt="" /></a>
-					<header>
-						<h3>Conte o que aconteceu</h3>
-					</header>
-				</article>
-			</div>
+			@endeach
 		</div>
 
 	</div>
@@ -60,53 +40,22 @@
 <!-- About Me -->
 <section id="about" class="three">
 	<div class="container">
-
 		<header>
-			<h2>Conheça o projeto</h2>
+			<h2>{{ theme.conheca.titulo }}</h2>
 		</header>
-
-		<a href="#" class="image featured"><img src="{{ assetsUrl('site/themes/default/images/banner.jpg') }}" alt="" /></a>
-
-		<p>
-			Aqui temos um texto mais longo e explicativo. Se alguém chega até aqui,
-			provavelmente quer saber mais e está interessado. É a hora informar os detalhes,
-			colocar as cartas na mesa e convercer o leitor a apoiar o projeto.
-			É o momento de apresentar dificuldades e informar como as pessoas podem contribuir.
-		</p>
-
+		<a href="#" class="image featured"><img src="{{ theme.conheca.imagem }}" alt="Foto, conheça" /></a>
+		<p>{{ theme.conheca.descricao }}</p>
 	</div>
 </section>
 
-<!-- Contact -->
-<section id="contact" class="four">
-	<div class="container">
+@include('site/_contato')
 
-		<header>
-			<h2>Fale com a gente</h2>
-		</header>
+@endsection
 
-		<p>Manda uma mensagem que a gente te responde rapidinho!</p>
-
-		<ul class="icons">
-			<li style="display: block;">
-				<a href="#" class="icon brands fa-whatsapp" style="width: 100%;">
-					92 99900-0099
-					<span class="label">Whatsapp</span>
-				</a>
-			</li>
-			<li style="display: block;">
-				<a href="#" class="icon brands fa-instagram" style="width: 100%;">
-					@patrulhadacrianca
-					<span class="label">Instagram</span>
-				</a>
-			</li>
-			<li style="display: block;">
-				<a href="#" class="icon brands fa-facebook-f" style="width: 100%;">
-					/patrulhadacrianca
-					<span class="label">Facebook</span>
-				</a>
-			</li>
-		</ul>
-	</div>
-</section>
+@section('css')
+	<style>
+	#main > section.one {
+		background-image: url("{{ theme.apresentacao.imagem }}");
+	}
+	</style>
 @endsection

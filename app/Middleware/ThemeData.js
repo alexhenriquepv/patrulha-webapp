@@ -9,12 +9,18 @@ const themePublicPath = '/site/themes/default'
 class ThemeData {
 
   async handle ({ view }, next) {
-    // const defaultThemeConfig = JSON.parse(fs.readFileSync(Helpers.resourcesPath(`themes/default.json`)))
-    const currentThemeConfig = JSON.parse(fs.readFileSync(Helpers.resourcesPath(`themes/current.json`)))
-    // const config = Object.assign(defaultThemeConfig, currentThemeConfig)
+    let currentThemeConfig = {}
+    const currentFile = Helpers.resourcesPath("themes/current.json")
+    const exist = fs.existsSync(currentFile)
+    
+    if (!exist) {
+      const defaultFile = Helpers.resourcesPath("themes/default.json")
+      fs.copyFileSync(defaultFile, currentFile)
+    }
+
+    currentThemeConfig = JSON.parse(fs.readFileSync(currentFile))
 
     view.share({ theme: currentThemeConfig })
-
     await next()
   }
 }

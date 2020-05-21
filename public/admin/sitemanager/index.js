@@ -26,10 +26,11 @@ $('document').ready(() => {
         },
         methods: {
             onSelect: function (image) {
-                const parentEl = $(this.target).parents('.ui.card')
+                const parentEl = $(this.target).closest('.ui.card')
                 const newpath = '/admin/filemanager/show/' + image
                 parentEl.find('img').attr('src', newpath)
-                parentEl.find('input[name="theme[apresentacao][img][value]"]').val(newpath)
+                parentEl.find('.field-value').val(newpath)
+                swal.close()
             }
         },
         created: function () {
@@ -51,20 +52,19 @@ $('document').ready(() => {
     })
 
     $form.form({
-        onSuccess: (e, fields) => {
+        onSuccess: (e, fields) => {console.log('submit')
             e.preventDefault()
-            console.log(fields)
-
             $.ajax({
                 method: 'POST',
                 url: '/admin/sitemanager',
                 headers: { 'X-CSRF-TOKEN': $('meta[name=_csrf]').attr('content') },
                 data: fields,
                 success: (data) => {
-                    console.log(data)
+                    swal('Ok', data.message, 'success')
                 },
                 error: (err) => console.log(err)
             })
-        }
+        },
+        onFailure: (err) => console.log(err)
     })
 })

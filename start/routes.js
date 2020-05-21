@@ -4,7 +4,7 @@
 const Route = use('Route')
 
 Route.get('/', 'DefaultController.index').as('site.index').middleware('themedata')
-Route.get('cadastro', 'DefaultController.cadastro').as('site.cadastro')
+Route.get('cadastro', 'DefaultController.cadastro').as('site.cadastro').middleware('themedata')
 
 Route.group(() => {
     Route.get('/', 'BeneficiarioController.index')

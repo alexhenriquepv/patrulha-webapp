@@ -3,32 +3,44 @@
 @section('content')
 <section id="contact" class="four">
     <div class="container">
-
         <header>
-            <h2>Cadastro</h2>
+            <h2>{{ theme.cadastro.titulo }}</h2>
         </header>
-
-        <p>
-            Fala um pouquinho como funciona o cadastro e lembra que, provavelente,
-            pessoas com pouca experiência digital estarão acessando o site.
-        </p>
+        <p>{{ theme.cadastro.descricao }}</p>
 
         <form class="ui form" method="post" id="form" data-url="{{ route('beneficiarios.store') }}">
             {{ csrfField() }}
             <div class="row">
-                <div class="ui field col-6 col-12-mobile">
-                    <input type="text" name="nome" placeholder="Nome completo" />
+                <div class="grouped fields col-4 col-12-mobile" style="text-align: start;">
+                    <label for="">Gênero</label>
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <label for="M">Masculino</label>
+                            <input type="radio" name="genero" id="M">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <label for="F">Feminino</label>
+                            <input type="radio" name="genero" id="F">
+                        </div>
+                    </div>
                 </div>
-                <div class="col-6 col-12-mobile">
-                    <input type="text" name="contato" placeholder="Número pra contato" />
+                <div class="ui field col-4 col-12-mobile">
+                    <label for="">Nome completo</label>
+                    <input type="text" name="nome" />
+                </div>
+                <div class="ui field col-4 col-12-mobile">
+                    <label for="">Número pra contato</label>
+                    <input type="text" name="contato" />
                 </div>
 
-                <div class="col-4 col-12-mobile">
+                <div class="ui field col-4 col-12-mobile">
                     <label for="">CPF</label>
                     <input type="text" name="cpf" placeholder="" />
                 </div>
 
-                <div class="col-4 col-12-mobile">
+                <div class="ui field col-4 col-12-mobile">
                     <label for="">RG</label>
                     <input type="text" name="rg" placeholder="" />
                 </div>
@@ -57,7 +69,7 @@
                     </select>
                 </div>
 
-                <div class="col-4 col-12-mobile">
+                <div class="ui field col-4 col-12-mobile">
                     <label for="">Profissão</label>
                     <input type="text" name="profissao" />
                 </div>
@@ -72,22 +84,22 @@
                     </select>
                 </div>
 
-                <div class="col-4 col-12-mobile">
+                <div class="ui field col-4 col-12-mobile">
                     <input type="text" name="cep" placeholder="CEP" />
                 </div>
-                <div class="col-4 col-12-mobile">
+                <div class="ui field col-4 col-12-mobile">
                     <input type="text" name="cidade" placeholder="Cidade" />
                 </div>
-                <div class="col-4 col-12-mobile">
+                <div class="ui field col-4 col-12-mobile">
                     <input type="text" name="bairro" placeholder="Bairro" />
                 </div>
-                <div class="col-4 col-12-mobile">
+                <div class="ui field col-4 col-12-mobile">
                     <input type="text" name="rua" placeholder="Rua" />
                 </div>
-                <div class="col-4 col-12-mobile">
+                <div class="ui field col-4 col-12-mobile">
                     <input type="text" name="complemento" placeholder="Complemento" />
                 </div>
-                <div class="col-4 col-12-mobile">
+                <div class="ui field col-4 col-12-mobile">
                     <input type="text" name="ponto_referencia" placeholder="Ponto de referência" />
                 </div>
 
@@ -127,30 +139,7 @@
     </div>
 </section>
 
-<section>
-    <p>Tá em dúvida? Manda uma mensagem que a gente te ajuda!</p>
-
-    <ul class="icons">
-        <li style="display: block;">
-            <a href="#" class="icon brands fa-whatsapp" style="width: 100%;">
-                92 99900-0099
-                <span class="label">Whatsapp</span>
-            </a>
-        </li>
-        <li style="display: block;">
-            <a href="#" class="icon brands fa-instagram" style="width: 100%;">
-                @patrulhadacrianca
-                <span class="label">Instagram</span>
-            </a>
-        </li>
-        <li style="display: block;">
-            <a href="#" class="icon brands fa-facebook-f" style="width: 100%;">
-                /patrulhadacrianca
-                <span class="label">Facebook</span>
-            </a>
-        </li>
-    </ul>
-</section>
+@include('site/_contato')
 @endsection
 
 @section('js')

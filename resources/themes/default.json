@@ -1,44 +1,42 @@
 {
-    "logo": {
-        "type": "img",
-        "value": "/site/themes/default/images/logo.jpg"
-    },
+    "logo": "/site/themes/default/images/logo.jpg",
     "apresentacao": {
-        "titulo": {
-            "type": "text",
-            "value": "Apresentação do projeto"
-        },
-        "descricao": {
-            "type": "text",
-            "value": "Resumo rápido, com explicação simples e linguagem fácil"
-        },
-        "img": {
-            "type": "img",
-            "value": "/site/themes/defaultimages/banner.jpg"
-        }
+        "titulo": "Apresentação do projeto",
+        "descricao": "Resumo rápido, com explicação simples e linguagem fácil",
+        "imagem": "/site/themes/default/images/banner.jpg"
     },
     "acoes": {
-        "titulo": {
-            "type": "text",
-            "value": "Nossas ações"
-        },
-        "descricao": {
-            "type": "text",
-            "value": "Fale um pouco do que o projeto faz. Sobre as últimas atividades e os objetivos, de forma simples e direta. É um texto curto que define e caracteriza o projeto, portanto não prolongue nem fale de mais."
-        },
-        "imagens": [
+        "titulo": "Nossas ações",
+        "descricao": "Exemplo...",
+        "banners": [
             {
-                "type": "img",
-                "value": "/site/themes/default/images/banner.jpg"
+                "descricao": "Ação 1",
+                "imagem": "/site/themes/default/images/foto01.jpg"
             },
             {
-                "type": "img",
-                "value": "/site/themes/default/images/banner.jpg"
+                "descricao": "Ação 2",
+                "imagem": "/site/themes/default/images/foto02.jpg"
             },
             {
-                "type": "img",
-                "value": "/site/themes/default/images/banner.jpg"
+                "descricao": "Ação 3",
+                "imagem": "/site/themes/default/images/foto03.jpg"
             }
         ]
+    },
+    "conheca": {
+        "imagem": "/site/themes/default/images/banner.jpg",
+        "titulo": "Conhecendo o projeto",
+        "descricao": "Exemplo..."
+    },
+    "contato": {
+        "titulo": "Fale com a gente",
+        "descricao": "Liga pra nós",
+        "whatsapp": "92 99333-9999",
+        "instagram": "@instagram",
+        "facebook": "/facebook"
+    },
+    "cadastro": {
+        "titulo": "Cadastro",
+        "descricao": "Explicação geral do cadastro"
     }
 }

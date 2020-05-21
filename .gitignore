@@ -11,6 +11,9 @@ tmp
 # The development sqlite file
 database/*.sqlite
 
+# the runtime theme config
+resources/themes/current.json
+
 # VSCode & Webstorm history directories
 .history
 .idea
