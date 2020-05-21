@@ -16,7 +16,7 @@ $(document).ready(() => {
         $fileList.html('')
         files.forEach(f => {
             const template = `
-                <div class="item">
+                <div class="item" data-url="/admin/filemanager/${f}">
                     <img src="/admin/filemanager/show/${f}" alt="Teste" class="ui small image">
                     <div class="content">
                         <div class="header">
@@ -24,7 +24,7 @@ $(document).ready(() => {
                         </div>
                     </div>
                     <div class="right floated content">
-                        <button class="ui button icon">
+                        <button class="ui button icon btn-file-delete">
                             <i class="icon trash"></i>
                         </button>
                     </div>
@@ -32,6 +32,25 @@ $(document).ready(() => {
             `.trim()
 
             $fileList.append(template)
+        })
+        listenDeletes()
+    }
+
+    function listenDeletes () {
+        $('.btn-file-delete').click((e) => {
+            const el = $(e.currentTarget)
+            const parent = el.closest('.item')
+            $.ajax({
+                method: 'DELETE',
+                url: parent.data('url'),
+                headers: { 'X-CSRF-TOKEN': $('meta[name="_csrf"]').attr('content') },
+                beforeSend: () => el.addClass('loading'),
+                success: () => parent.remove(),
+                error: (err) => {
+                    swal('Ocorreu um problema', err.responseText, 'error')
+                    el.removeClass('loading')
+                }
+            })
         })
     }
 

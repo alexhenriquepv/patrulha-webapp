@@ -11,15 +11,13 @@
 </div>
 
 <div
-    data-url="{{ route('filemanager.sendfile') }}"
+    data-url="{{ route('filemanager.store') }}"
     class="ui large button top attached" tabindex="0" id="btn-file-select">
     <i class="icon upload"></i>
     Enviar arquivo
 </div>
 <div class="ui segment attached">
-    <div class="ui middle aligned divided list" data-url="{{ route('filemanager.index') }}" id="file-list">
-        
-    </div>
+    <div class="ui middle aligned divided list" data-url="{{ route('filemanager.index') }}" id="file-list"></div>
 </div>
 
 @endsection
