@@ -109,6 +109,9 @@ $(document).ready(() => {
                                 doUpload(f)
                             })
                         }
+                        else {
+                            doUpload(f)
+                        }
                     }
                 }
             }
