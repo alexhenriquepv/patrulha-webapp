@@ -1,0 +1,36 @@
+<div class="ui segment padded raised">
+    <div class="ui block inverted header">Apresentação</div>
+    <div class="ui two column stackable center grid">
+        <div class="column">
+            <div class="ui card">
+                <input type="hidden" class="field-value" 
+                    name="theme[apresentacao][imagem]" value="{{ theme.apresentacao.imagem }}">
+                <div class="content">
+                    <div class="header">Banner</div>
+                    <div class="meta">1920 x 768</div>
+                </div>
+                <div class="content center aligned">
+                    <img src="{{ theme.apresentacao.imagem }}" alt="logo" class="ui image small">
+                </div>
+                <div class="ui attached button btn-change-img">
+                    <i class="icon add"></i> Trocar Imagem
+                </div>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="ui form">
+                <div class="ui field">
+                    <label for="">Título</label>
+                    <input type="text" placeholder="Título" value="{{ theme.apresentacao.titulo }}"
+                        name="theme[apresentacao][titulo]">
+                </div>
+                <div class="ui field">
+                    <label for="">Descrição</label>
+                    <input type="text" placeholder="Descrição" value="{{ theme.apresentacao.descricao }}"
+                        name="theme[apresentacao][descricao]">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

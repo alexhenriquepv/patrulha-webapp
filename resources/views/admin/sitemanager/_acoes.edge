@@ -1,0 +1,45 @@
+<div class="ui segment padded raised">
+    <div class="ui block inverted header">Ações</div>
+    <div class="ui on column stackable center grid">
+        <div class="column">
+            <div class="ui form">
+                <div class="ui field">
+                    <label for="">Título</label>
+                    <input type="text" placeholder="Título" value="{{ theme.acoes.titulo }}"
+                        name="theme[acoes][titulo]">
+                </div>
+                <div class="ui field">
+                    <label for="">Descrição</label>
+                    <input type="text" placeholder="Descrição" value="{{ theme.acoes.descricao }}"
+                        name="theme[acoes][descricao]">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ui three column stackable center grid">
+        @each(img in theme.acoes.banners)
+        <div class="column">
+            <div class="ui card">
+                <input type="hidden" class="field-value"
+                    value="{{ theme.acoes.banners[$loop.index].imagem }}"
+                    name="theme[acoes][banners][{{ $loop.index }}][imagem]">
+                <div class="content">
+                    <div class="header">Banner {{ $loop.index + 1 }}</div>
+                    <div class="meta">720 x 288</div>
+                </div>
+                <div class="content center aligned">
+                    <img src="{{ theme.acoes.banners[$loop.index].imagem }}" alt="logo" class="ui image small">
+                </div>
+                <div class="content center aligned">
+                    <input type="text" 
+                        value="{{ theme.acoes.banners[$loop.index].descricao }}"
+                        name="theme[acoes][banners][{{ $loop.index }}][descricao]">
+                </div>
+                <div class="ui attached button btn-change-img">
+                    <i class="icon add"></i> Trocar Imagem
+                </div>
+            </div>
+        </div>
+        @endeach
+    </div>
+</div>

@@ -1,6 +1,7 @@
 const { hooks } = require('@adonisjs/ignitor')
 
 hooks.after.providersBooted(() => {
+    
     const View = use('View')
     const moment = use('moment')
 
@@ -9,11 +10,9 @@ hooks.after.providersBooted(() => {
     })
 
     View.global('maps_url', (coordinate_str) => {
-        // coord_x;coord_y
+        // longitude, latitude
         const coords = coordinate_str.split(';')
-
-        // lat,lng
-        let url = `https://www.google.com/maps/search/?api=1&query=${coords[1]},${coords[0]}`
+        const url = `https://www.google.com/maps/search/?api=1&query=${coords[1]},${coords[0]}`
         return url
     })
 })

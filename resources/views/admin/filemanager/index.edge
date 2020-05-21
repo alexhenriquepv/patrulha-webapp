@@ -1,0 +1,37 @@
+@layout('layout/admin')
+
+@section('content')
+
+<div class="ui segment basic">
+    <h2 class="ui header">
+        <div class="content">
+            Gerenciador de arquivos
+        </div>
+    </h2>
+</div>
+
+<div
+    data-url="{{ route('filemanager.sendfile') }}"
+    class="ui large button top attached" tabindex="0" id="btn-file-select">
+    <i class="icon upload"></i>
+    Enviar arquivo
+</div>
+<div class="ui segment attached">
+    <div class="ui middle aligned divided list" data-url="{{ route('filemanager.index') }}" id="file-list">
+        
+    </div>
+</div>
+
+@endsection
+
+@section('js')
+{{ script('admin/filemanager/index') }}
+@endsection
+
+@section('css')
+<style>
+    .swal-icon img {
+        max-width: 50%;
+    }
+</style>
+@endsection

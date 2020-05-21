@@ -1,0 +1,42 @@
+{
+    "logo": "/site/themes/default/images/logo.jpg",
+    "apresentacao": {
+        "titulo": "Apresentação do projeto",
+        "descricao": "Resumo rápido, com explicação simples e linguagem fácil",
+        "imagem": "/site/themes/default/images/banner.jpg"
+    },
+    "acoes": {
+        "titulo": "Nossas ações",
+        "descricao": "Exemplo...",
+        "banners": [
+            {
+                "descricao": "Ação 1",
+                "imagem": "/site/themes/default/images/foto01.jpg"
+            },
+            {
+                "descricao": "Ação 2",
+                "imagem": "/site/themes/default/images/foto02.jpg"
+            },
+            {
+                "descricao": "Ação 3",
+                "imagem": "/site/themes/default/images/foto03.jpg"
+            }
+        ]
+    },
+    "conheca": {
+        "imagem": "/site/themes/default/images/banner.jpg",
+        "titulo": "Conhecendo o projeto",
+        "descricao": "Exemplo..."
+    },
+    "contato": {
+        "titulo": "Fale com a gente",
+        "descricao": "Liga pra nós",
+        "whatsapp": "92 99333-9999",
+        "instagram": "@instagram",
+        "facebook": "/facebook"
+    },
+    "cadastro": {
+        "titulo": "Cadastro",
+        "descricao": "Explicação geral do cadastro"
+    }
+}

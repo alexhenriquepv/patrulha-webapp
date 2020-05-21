@@ -36,6 +36,7 @@ $(document).ready(() => {
     })
 
     $('.ui.dropdown').dropdown()
+    $('.ui.checkbox').checkbox()
 
     $('input[name=cep]').blur((e) => {
         const cep = $(e.currentTarget).val().replace(/\D/g, '')
