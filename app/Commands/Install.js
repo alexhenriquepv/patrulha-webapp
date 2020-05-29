@@ -9,6 +9,7 @@ class Install extends ace.Command {
     return `
       install
       { --theme: Reinstall only theme }
+      { --users: Restore default users }
     `
   }
 
@@ -36,6 +37,10 @@ class Install extends ace.Command {
     await ace.call("seed", {}, { files: 'ConfigSeeder.js' })
   }
 
+  async onlyDefaultUsers () {
+    await ace.call("seed", {}, { files: 'UsuarioSeeder.js' })
+  }
+
   async complete () {
     const reset = await this.confirm("Destruir os dados atuais?")
     try {
@@ -53,6 +58,7 @@ class Install extends ace.Command {
 
   async handle (args, flags) {
     if (flags.theme) await this.onlyTheme()
+    else if (flags.users) await this.onlyDefaultUsers()
     else this.complete()
   }
 }

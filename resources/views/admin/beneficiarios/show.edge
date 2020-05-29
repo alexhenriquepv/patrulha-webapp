@@ -3,7 +3,8 @@
 @section('content')
 
 <div class="ui segment basic">
-    <h2 class="ui header">
+    <h2 class="ui header dividing">
+        <i class="address book icon"></i>
         <div class="content">
             {{ beneficiario.nome }}
         </div>
@@ -11,23 +12,58 @@
 </div>
 
 <div class="ui segment basic">
-    <table class="ui table celled inverted">
+    <table class="ui table celled inverted two column">
         <tbody>
             <tr>
-                <td>Data de cadastro</td>
-                <td>{{ moment(beneficiario.created_at, 'DD/MM/YYYY') }}</td>
+                <td>Gênero</td>
+                <td>{{ beneficiario.genero == 'M' ? 'Masculino' : 'Feminino' }}</td>
             </tr>
             <tr>
-                <td>Solicitação</td>
-                <td>{{ beneficiario.descricao }}</td>
+                <td>Número pra contato</td>
+                <td>{{ beneficiario.contato|| '' }}</td>
             </tr>
+            <tr>
+                <td>CPF</td>
+                <td>{{ beneficiario.cpf|| '' }}</td>
+            </tr>
+            <tr>
+                <td>RG</td>
+                <td>{{ beneficiario.rg|| '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="ui segment basic">
+    <table class="ui table celled inverted two column brown">
+        <tbody>
             <tr>
                 <td>CEP</td>
                 <td>{{ beneficiario.cep || '' }}</td>
             </tr>
             <tr>
+                <td>Cidade</td>
+                <td>{{ beneficiario.cidade || '' }}</td>
+            </tr>
+            <tr>
                 <td>Bairro</td>
                 <td>{{ beneficiario.bairro || '' }}</td>
+            </tr>
+            <tr>
+                <td>Rua</td>
+                <td>{{ beneficiario.rua || '' }}</td>
+            </tr>
+            <tr>
+                <td>Complemento</td>
+                <td>{{ beneficiario.complemento || '' }}</td>
+            </tr>
+            <tr>
+                <td>Ponto de referência</td>
+                <td>{{ beneficiario.ponto_referencia || '' }}</td>
+            </tr>
+            <tr>
+                <td>Condição de moradia</td>
+                <td>{{ beneficiario.condicao_moradia || '' }}</td>
             </tr>
             @if(beneficiario.coordenadas)
             <tr>
@@ -39,6 +75,41 @@
                 </td>
             </tr>
             @endif
+        </tbody>
+    </table>
+</div>
+
+<div class="ui segment basic">
+    <table class="ui table celled inverted two column grey">
+        <tbody>
+            <tr>
+                <td>Data de cadastro</td>
+                <td>{{ moment(beneficiario.created_at, 'DD/MM/YYYY') }}</td>
+            </tr>
+            <tr>
+                <td>Estado civil</td>
+                <td>{{ beneficiario.estado_civil|| '' }}</td>
+            </tr>
+            <tr>
+                <td>Escolaridade</td>
+                <td>{{ beneficiario.escolaridade|| '' }}</td>
+            </tr>
+            <tr>
+                <td>Profissão</td>
+                <td>{{ beneficiario.profissao|| '' }}</td>
+            </tr>
+            <tr>
+                <td>Ocupação</td>
+                <td>{{ beneficiario.ocupacao|| '' }}</td>
+            </tr>
+            <tr>
+                <td>Pessoa com deficiência?</td>
+                <td>{{ beneficiario.com_deficiencia ? 'Sim' : 'Não' }}</td>
+            </tr>
+            <tr>
+                <td>Solicitação</td>
+                <td>{{ beneficiario.descricao }}</td>
+            </tr>
         </tbody>
     </table>
 </div>

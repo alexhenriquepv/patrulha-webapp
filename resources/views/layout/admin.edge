@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="_csrf" content="{{ csrfToken }}">
+    <link rel="icon" sizes="192x192" href="{{ assetsUrl('images/logo.png') }}">
     <title>Admin</title>
     {{ style('https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css') }}
     <style>
@@ -13,7 +14,7 @@
         }
         #content {
             padding-top: 1em;
-            margin-left: 150px;
+            margin-left: 260px;
         }
         #btn-mobile {
             position: fixed;
@@ -33,7 +34,7 @@
     @!section('css')
 </head>
 <body>
-    <div class="ui thin sidebar inverted vertical menu">
+    <div class="ui sidebar inverted vertical menu">
         <div class="item">
             <a href="#" class="ui mini image logo">
                 <img src="{{ assetsUrl('site/themes/default/images/logo.jpg') }}" alt="logo">
@@ -42,26 +43,34 @@
                 Patrulha
             </a>
         </div>
-        <div class="item">
-            <a href="{{ route('sitemanager.index') }}">
-                <b>Gerenciador do site</b>
-            </a>
-        </div>
-        <div class="item">
-            <a href="{{ route('filemanager.index') }}">
-                <b>Gerenciador de arquivos</b>
-            </a>
-        </div>
-        <div class="item">
-            <a href="{{ route('beneficiarios.index') }}">
-                <b>Beneficiários</b>
-            </a>
-        </div>
-        <div class="item">
-            <a href="{{ route('beneficiarios.mapa') }}">
-                <b>Mapa</b>
-            </a>
-        </div>
+        <a href="{{ route('site.index') }}" class="item" target="_blank">
+            <i class="icon external"></i>
+            <b>Visualizar o site</b>
+        </a>
+        <a href="{{ route('sitemanager.index') }}" 
+            class="item {{ request.match(['/admin/sitemanager']) ? 'active': '' }}">
+            <i class="icon cog"></i>
+            <b>Gerenciador do site</b>
+        </a>
+        <a href="{{ route('filemanager.index') }}" 
+            class="item {{ request.match(['/admin/filemanager']) ? 'active': '' }}">
+            <i class="icon folder"></i>
+            <b>Gerenciador de arquivos</b>
+        </a>
+        <a href="{{ route('beneficiarios.index') }}" 
+            class="item {{ request.match(['/admin/beneficiarios']) ? 'active': '' }}">
+            <i class="icon address book"></i>
+            <b>Beneficiários</b>
+        </a>
+        <a href="{{ route('beneficiarios.mapa') }}" 
+            class="item {{ request.match(['/admin/mapa']) ? 'active': '' }}">
+            <i class="icon map"></i>
+            <b>Mapa</b>
+        </a>
+        <a href="{{ route('logout') }}" class="item">
+            <i class="icon lock open"></i>
+            <b>Sair do sistema</b>
+        </a>
     </div>
     <div class="pusher" id="content">
         <div class="ui container">

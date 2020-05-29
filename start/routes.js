@@ -1,13 +1,16 @@
 'use strict'
 
-/** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
 Route.get('/', 'DefaultController.index').as('site.index').middleware('themedata')
 Route.get('cadastro', 'DefaultController.cadastro').as('site.cadastro').middleware('themedata')
 
+Route.get('admin', 'DefaultController.login')
+Route.post('admin/login', 'AuthController.login').namespace('Admin').middleware('guest')
+
 Route.group(() => {
-    Route.get('/', 'BeneficiarioController.index')
+    Route.get('logout', 'AuthController.logout').as('logout')
+    Route.get('dashboard', 'BeneficiarioController.index')
 
     Route.resource('beneficiarios', 'BeneficiarioController')
         .validator(new Map([
@@ -23,11 +26,10 @@ Route.group(() => {
     Route.post('filemanager', 'FileManagerController.store').as("filemanager.store")
     Route.get('filemanager/show/:name', 'FileManagerController.show').as("filemanager.show")
     Route.delete('filemanager/:name', 'FileManagerController.destroy').as("filemanager.destroy")
-
-    Route.get('seed', 'BeneficiarioController.seed')
 })
 .namespace('Admin')
 .prefix('admin')
+.middleware('auth')
 
 Route.group(() => {
     Route.get('beneficiarios', 'BeneficiarioController.index')

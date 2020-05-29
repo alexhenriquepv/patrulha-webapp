@@ -2,6 +2,14 @@
 
 const Factory = use('Factory')
 
+Factory.blueprint('App/Models/Usuario', (faker, i, data) => {
+  return {
+    cpf: data.cpf,
+    nome: data.nome,
+    senha: data.senha
+  }
+})
+
 Factory.blueprint('App/Models/Beneficiario', (faker, i, data) => {
   return {
     genero: data.genero,
